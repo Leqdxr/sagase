@@ -10,7 +10,8 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="anime-details/:animeId" element={<AnimeDetails />} />
     </Route>
-  )
+  ),
+  {basename: import.meta.env.BASE_URL}
 )
 
 function App() {
