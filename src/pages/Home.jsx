@@ -16,6 +16,7 @@ export default function Home() {
   }
 
   useEffect(() => {
+    let ignore = false
     async function getAnimeStats() {
       try {
         setLoading(true)
@@ -26,17 +27,23 @@ export default function Home() {
         }
 
         const data = await response.json()
-        setResults(data.data)
+        if (!ignore) setResults(data.data)
       }
       catch (err) {
-        setError(err.message)
-        setResults([])
+        if (!ignore) {
+          setError(err.message)
+          setResults([])
+        }
+
       }
       finally {
-        setLoading(false)
+        if (!ignore) setLoading(false)
       }
     }
     getAnimeStats()
+    return () => {
+      ignore = true
+    }
   },
     [query])
 
