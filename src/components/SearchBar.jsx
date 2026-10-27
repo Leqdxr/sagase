@@ -1,6 +1,11 @@
 import React from 'react';
 
-export default function SearchBar() {
+export default function SearchBar({ text, setText, onSearch }) {
+
+  function handleSubmit() {
+    onSearch(text)
+  }
+
   return (
     <>
       <div className="bg-soft-blush px-4 py-8 text-center text-ink">
@@ -11,9 +16,14 @@ export default function SearchBar() {
 
         <div className="mx-auto flex max-w-xl items-center gap-2">
           <input type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             placeholder="One Piece"
             className="flex-1 border border-cherry-blossom bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cherry-blossom rounded-lg" />
-          <button className="bg-petal-rouge cursor-pointer rounded-lg px-5 py-2 font-semibold text-ink hover:bg-cotton-candy">Search</button>
+          <button
+            className="bg-petal-rouge cursor-pointer rounded-lg px-5 py-2 font-semibold text-ink hover:bg-cotton-candy"
+            onClick={handleSubmit}
+          >Search</button>
         </div>
       </div>
     </>
