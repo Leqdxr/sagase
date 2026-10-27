@@ -8,7 +8,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
-      <Route path="anime-details" element={<AnimeDetails />} />
+      <Route path="anime-details/:animeId" element={<AnimeDetails />} />
     </Route>
   )
 )
