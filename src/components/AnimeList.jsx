@@ -12,7 +12,7 @@ export default function AnimeList({ results = [] }) {
     return <AnimeCard anime={animeList} key={animeList.id} />
   })
   return (
-    <div className="p-4 mx-auto grid grid-cols-4 max-w-5xl gap-3 px-4">
+    <div className="mx-auto grid max-w-5xl grid-cols-2 gap-3 p-4 md:grid-cols-4">
       {anime}
     </div>
   );

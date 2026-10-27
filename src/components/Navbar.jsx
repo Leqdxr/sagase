@@ -7,7 +7,7 @@ export default function Navbar() {
         <div className="text-ink">
         <Link to="/">Sagase</Link>
         </div>
-        <div className="text-center text-ink">
+        <div className="hidden text-center text-ink md:block">
           Search for your desired anime
         </div>
       </div>
