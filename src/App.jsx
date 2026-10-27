@@ -1,11 +1,20 @@
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router';
 import './App.css'
+import Home from './pages/Home';
+import Layout from './Layout';
+import AnimeDetails from './pages/AnimeDetails';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route path="" element={<Home />} />
+      <Route path="anime-details" element={<AnimeDetails />} />
+    </Route>
+  )
+)
 
 function App() {
-  return (
-    <>
-
-    </>
-  )
+    return <RouterProvider router={router} />
 }
 
-export default App
+export default App;
