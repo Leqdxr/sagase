@@ -2,6 +2,9 @@ import React from 'react';
 import AnimeCard from './AnimeCard';
 
 export default function AnimeList({ results = [] }) {
+  if (results === null) {
+    return null
+  }
   if (results.length === 0) {
     return <div className="text-center">No results found</div>
   }
