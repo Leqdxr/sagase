@@ -2,9 +2,10 @@
 
 @theme {
     --font-sans: "Nunito", sans-serif;
-    --color-molten-lava: #780000;
-    --color-brick-red: #c1121f;
-    --color-papaya-whip: #fdf0d5;
-    --color-deep-space-blue: #003049;
-    --color-steel-blue: #669bbc;
+    --color-soft-blush: #ffe5ec;
+    --color-pastel-pink: #ffc2d1;
+    --color-cherry-blossom: #ffb3c6;
+    --color-cotton-candy: #ff8fab;
+    --color-petal-rouge: #fb6f92;
+    --color-ink: #3d1424;
 }

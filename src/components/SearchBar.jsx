@@ -3,7 +3,7 @@ import React from 'react';
 export default function SearchBar() {
   return (
     <>
-      <div className="bg-papaya-whip px-4 py-8 text-center text-deep-space-blue">
+      <div className="bg-soft-blush px-4 py-8 text-center text-ink">
         <div className="mb-4">
           <p className="text-2xl font-bold">Find your next anime</p>
           <p className="text-sm">Search Thousands of titles</p>
@@ -12,8 +12,8 @@ export default function SearchBar() {
         <div className="mx-auto flex max-w-xl items-center gap-2">
           <input type="text"
             placeholder="One Piece"
-            className="flex-1 border border-steel-blue bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-steel-blue rounded-lg" />
-          <button className="bg-brick-red cursor-pointer rounded-lg px-5 py-2 font-semibold text-papaya-whip hover:bg-molten-lava">Search</button>
+            className="flex-1 border border-cherry-blossom bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cherry-blossom rounded-lg" />
+          <button className="bg-petal-rouge cursor-pointer rounded-lg px-5 py-2 font-semibold text-ink hover:bg-cotton-candy">Search</button>
         </div>
       </div>
     </>
