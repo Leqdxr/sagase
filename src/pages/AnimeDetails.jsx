@@ -39,16 +39,32 @@ export default function AnimeDetails() {
   }, [animeId]);
 
   if (loading) {
-      return <p className="py-8 text-center text-ink">Loading anime details....</p>
-    }
+    return (
+      <div className="flex flex-col items-center gap-4 py-24 text-ink">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-cherry-blossom border-t-petal-rouge" />
+        <p className="text-sm font-medium text-ink/70">Loading anime details...</p>
+      </div>
+    );
+  }
 
-    if (error) {
-      return <p className="py-8 text-center text-ink">{error}</p>
-    }
+  if (error) {
+    return (
+      <div className="mx-auto my-16 max-w-md rounded-2xl border border-dashed border-cherry-blossom bg-soft-blush/50 px-6 py-12 text-center text-ink">
+        <p className="text-lg font-semibold">Could not load this anime</p>
+        <p className="mt-1 text-sm text-ink/70">{error}</p>
+        <Link
+          to="/"
+          className="mt-6 inline-block rounded-xl bg-petal-rouge px-5 py-2 text-sm font-semibold text-ink shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-cotton-candy hover:shadow-lg"
+        >
+          Back to search
+        </Link>
+      </div>
+    );
+  }
 
-    if (!anime) {
-      return null
-    }
+  if (!anime) {
+    return null;
+  }
 
   const {
     canonicalTitle,
@@ -60,47 +76,69 @@ export default function AnimeDetails() {
   } = anime.attributes;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-6 text-ink">
+    <section className="mx-auto max-w-5xl px-4 py-10 text-ink md:px-6">
       <Link
         to="/"
-        className="mb-4 inline-block rounded-lg border border-petal-rouge px-3 py-1 text-sm font-semibold hover:bg-soft-blush"
+        className="group mb-8 inline-flex items-center gap-2 rounded-xl border border-petal-rouge bg-white px-4 py-2 text-sm font-semibold shadow-sm transition-all duration-200 hover:bg-soft-blush hover:shadow-md"
       >
-        ← Back to search
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1"
+        >
+          <path d="M19 12H5" />
+          <path d="M12 19l-7-7 7-7" />
+        </svg>
+        Back to search
       </Link>
 
-      <div className="flex flex-col gap-6 md:flex-row">
-        {posterImage?.large ? (
-          <img
-            src={posterImage.large}
-            alt={canonicalTitle}
-            className="w-full rounded-xl border border-cherry-blossom object-cover md:w-64 md:self-start"
-          />
-        ) : (
-          <div className="flex aspect-[3/4] w-full items-center justify-center rounded-xl bg-pastel-pink md:w-64 md:self-start">
-            No image
-          </div>
-        )}
+      <div className="flex flex-col gap-8 md:flex-row">
+        <div className="w-full shrink-0 md:w-72 md:self-start">
+          {posterImage?.large ? (
+            <img
+              src={posterImage.large}
+              alt={canonicalTitle}
+              className="w-full rounded-2xl border border-cherry-blossom/60 object-cover shadow-xl shadow-petal-rouge/30"
+            />
+          ) : (
+            <div className="flex aspect-[3/4] w-full items-center justify-center rounded-2xl border border-cherry-blossom/60 bg-pastel-pink text-sm shadow-xl shadow-petal-rouge/30">
+              No image
+            </div>
+          )}
+        </div>
 
-        <div>
-          <h1 className="text-2xl font-bold">{canonicalTitle}</h1>
+        <div className="flex-1">
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            {canonicalTitle}
+          </h1>
 
-          <div className="mt-3 flex flex-wrap gap-2">
-            <span className="rounded-full bg-pastel-pink px-3 py-1 text-xs font-semibold">
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="rounded-full bg-petal-rouge px-3.5 py-1 text-xs font-bold uppercase tracking-wide shadow-sm">
               {subtype}
             </span>
-            <span className="rounded-full bg-pastel-pink px-3 py-1 text-xs font-semibold">
-              {episodeCount ?? "?"} eps
+            <span className="rounded-full bg-pastel-pink px-3.5 py-1 text-xs font-semibold ring-1 ring-cherry-blossom/60">
+              {episodeCount ?? "?"} episodes
             </span>
-            <span className="rounded-full bg-pastel-pink px-3 py-1 text-xs font-semibold capitalize">
+            <span className="rounded-full bg-pastel-pink px-3.5 py-1 text-xs font-semibold capitalize ring-1 ring-cherry-blossom/60">
               {status}
             </span>
           </div>
 
-          <p className="mt-4 whitespace-pre-line text-sm leading-relaxed">
-            {synopsis ?? "No synopsis available."}
-          </p>
+          <div className="mt-6 rounded-2xl border border-cherry-blossom/60 bg-soft-blush/50 p-5 md:p-6">
+            <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-ink/70">
+              Synopsis
+            </h2>
+            <p className="whitespace-pre-line text-sm leading-relaxed md:text-base md:leading-7">
+              {synopsis ?? "No synopsis available."}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
